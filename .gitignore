@@ -12,8 +12,8 @@
 /build
 .firebase
 .firebaserc
-/database.rules.json
-/firebase.json
+# /database.rules.json
+# /firebase.json
 # misc
 .DS_Store
 .env.local
