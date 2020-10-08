@@ -15,7 +15,7 @@ export const Nav = styled.nav`
   z-index: 10;
 
   @media screen and (max-width: 960px) {
-    transition: 0.8s all ease;
+    transition: 1s all ease;
   }
 `;
 
@@ -33,12 +33,13 @@ export const NavLogo = styled(LinkRouter)`
   color: #fff;
   justify-self: flex-start;
   cursor: pointer;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   display: flex;
   align-items: center;
   margin-left: 24px;
   font-weight: bold;
   text-decoration: none;
+  font-family: 'Pacifico', cursive;
 `;
 
 export const MobileIcon = styled.div`
