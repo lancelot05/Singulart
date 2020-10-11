@@ -9,6 +9,7 @@ import {
   HeroBtnWrapper,
   ArrowForward,
   ArrowRight,
+  Quote,
 } from './HeroSectionElements';
 import Video from '../../videos/video.mp4';
 import { Button } from '../SignupButton';
@@ -28,9 +29,13 @@ const HeroSection = () => {
       <HeroContent>
         <HeroH1>Online platform for Artlovers</HeroH1>
         <HeroP>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          <Quote>
+            Art washes away from the soul the dust of everyday life.
+          </Quote>
+          <br /> <br /> <i>- Pablo Picasso</i> <br />
+          <br /> With us, you can escape your hectic bustling life and find a
+          piece of yourself you didn't know was lost. Rediscover yourself with
+          Art.
         </HeroP>
         <HeroBtnWrapper>
           <Button
