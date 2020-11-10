@@ -1,5 +1,4 @@
 import React from 'react'
-import { projectFirestore } from '../../firebase/config';
 import useFirestore from '../../hooks/useFirestore';
 import Icon1 from '../../images/avatar.svg';
 import './index.css';
