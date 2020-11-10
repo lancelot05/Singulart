@@ -3,20 +3,36 @@ import { FaBars } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
 import { animateScroll as scroll } from 'react-scroll';
 import {
-  Nav,
-  NavbarContainer,
+
   NavLogo,
-  MobileIcon,
-  NavMenu,
-  NavItem,
+
   NavLinks,
-  NavBtn,
+
   NavBtnLink,
 } from './NavbarElements';
 
+import './index.css';
+import { projectAuth } from '../../firebase/config';
+import { Redirect } from 'react-router-dom';
+import {Button} from '../ButtonElement';
+
+
 const Navbar = ({ toggle }) => {
   const [scrollNav, setScrollNav] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
 
+  useEffect(() => {
+    projectAuth.onAuthStateChanged((user) => {
+      if (user) {
+        setLoggedIn(true)
+      } else {
+        setLoggedIn(false)
+      }
+    });
+
+  }, []);
+
+  
   const changeNav = () => {
     if (window.scrollY >= 80) {
       setScrollNav(true);
@@ -29,6 +45,13 @@ const Navbar = ({ toggle }) => {
     scroll.scrollToTop();
   };
 
+  const userLogout = () => {
+    projectAuth.signOut();
+    return (
+      <Redirect to='/' />
+    )
+  }
+
   useEffect(() => {
     window.addEventListener('scroll', changeNav);
   }, []);
@@ -36,16 +59,16 @@ const Navbar = ({ toggle }) => {
   return (
     <>
       <IconContext.Provider value={{ color: '#fff' }}>
-        <Nav scrollNav={scrollNav}>
-          <NavbarContainer>
+        <nav className={'Nav ' + (scrollNav ? '' : 'transparent')}>
+          <div className='NavBarContainer'>
             <NavLogo to='/' onClick={toggleHome}>
               Singulart
             </NavLogo>
-            <MobileIcon onClick={toggle}>
+            <div className='MobileIcon' onClick={toggle}>
               <FaBars />
-            </MobileIcon>
-            <NavMenu>
-              <NavItem>
+            </div>
+            <ul className='NavMenu'>
+              <li className='NavItem'>
                 <NavLinks
                   to='about'
                   smooth={true}
@@ -56,8 +79,8 @@ const Navbar = ({ toggle }) => {
                 >
                   About
                 </NavLinks>
-              </NavItem>
-              <NavItem>
+              </li>
+              <li className='NavItem'>
                 <NavLinks
                   to='discover'
                   smooth={true}
@@ -68,8 +91,8 @@ const Navbar = ({ toggle }) => {
                 >
                   Discover
                 </NavLinks>
-              </NavItem>
-              <NavItem>
+              </li>
+              <li className='NavItem'>
                 <NavLinks
                   to='services'
                   smooth={true}
@@ -80,8 +103,8 @@ const Navbar = ({ toggle }) => {
                 >
                   Services
                 </NavLinks>
-              </NavItem>
-              <NavItem>
+              </li>
+              <li className='NavItem'>
                 <NavLinks
                   to='signup'
                   smooth={true}
@@ -92,13 +115,13 @@ const Navbar = ({ toggle }) => {
                 >
                   Sign Up
                 </NavLinks>
-              </NavItem>
-            </NavMenu>
-            <NavBtn>
-              <NavBtnLink to='/signin'>Sign In</NavBtnLink>
-            </NavBtn>
-          </NavbarContainer>
-        </Nav>
+              </li>
+            </ul>
+            <nav className='NavBtn'>
+              {loggedIn ? <Button to='signup' primary={1} dark={1} onClick={() => userLogout()}>Logout</Button> : <NavBtnLink to='/signin'>Sign In</NavBtnLink>}
+            </nav>
+          </div>
+        </nav>
       </IconContext.Provider>
     </>
   );

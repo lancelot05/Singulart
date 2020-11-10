@@ -2,44 +2,36 @@ import React from 'react';
 import Icon1 from '../../images/svg-5.svg';
 import Icon2 from '../../images/svg-4.svg';
 import Icon3 from '../../images/svg-3.svg';
-import {
-  ServicesContainer,
-  ServicesH1,
-  ServicesH2,
-  ServicesWrapper,
-  ServicesCard,
-  ServicesIcon,
-  ServicesP,
-} from './ServicesElements';
+import './index.css'
 
 const Services = () => {
   return (
-    <ServicesContainer id='services'>
-      <ServicesH1>Our services</ServicesH1>
-      <ServicesWrapper>
-        <ServicesCard>
-          <ServicesIcon src={Icon1} />
-          <ServicesH2>Sketches</ServicesH2>
-          <ServicesP>
+    <div className='ServicesContainer' id='services'>
+      <h1 className = 'ServicesH1'>Our services</h1>
+      <div className = 'ServicesWrapper'>
+        <div className = 'ServicesCard'>
+          <img className = 'ServicesIcon' src={Icon1} alt='icon1'/>
+          <h2 className = 'ServicesH2'>Sketches</h2>
+          <p className='ServicesP'>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          </ServicesP>
-        </ServicesCard>
-        <ServicesCard>
-          <ServicesIcon src={Icon2} />
-          <ServicesH2>Paintings</ServicesH2>
-          <ServicesP>
+          </p>
+        </div>
+        <div className = 'ServicesCard'>
+          <img className = 'ServicesIcon' src={Icon2} alt='icon2'/>
+          <h2 className = 'ServicesH2'>Paintings</h2>
+          <p className='ServicesP'>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          </ServicesP>
-        </ServicesCard>
-        <ServicesCard>
-          <ServicesIcon src={Icon3} />
-          <ServicesH2>Digital Artwork</ServicesH2>
-          <ServicesP>
+          </p>
+        </div>
+        <div className = 'ServicesCard'>
+          <img className = 'ServicesIcon' src={Icon3} alt='icon3'/>
+          <h2 className = 'ServicesH2'>Digital Artwork</h2>
+          <p className='ServicesP'>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          </ServicesP>
-        </ServicesCard>
-      </ServicesWrapper>
-    </ServicesContainer>
+          </p>
+        </div>
+      </div>
+    </div>
   );
 };
 
